@@ -12,6 +12,7 @@ function ToolFQDN() {
       setFqdnList(e.target.value)
     }
 
+// Test Update
 
     return (
         <>
@@ -30,7 +31,7 @@ function ToolFQDN() {
                 </div>
                 <div className="col-6">
                 <label>Configuration Output</label>
-                <textarea id="configOutput" className="textFields" defaultValue={{fqdnList}.split("\n")} ></textarea>
+                <textarea id="configOutput" className="textFields" defaultValue={fqdnList}></textarea>
                 </div>
             </div>
         </Modal.Body>
