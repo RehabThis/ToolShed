@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, { useState, useRef } from 'react'
 import { Button, Modal } from 'react-bootstrap'
 //import ModalNew from './ModalNew'
 
@@ -9,42 +9,59 @@ function ToolFQDN() {
 
     var [fqdnList, setFqdnList] = useState("");
     var handleChange = e => {
-      setFqdnList(e.target.value)
+        setFqdnList(e.target.value)
     }
 
-// Test Update
-
-    return (
-        <>
-        <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
-        </Button>
-        <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Whitelist Config Generator</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <div className="row">
-                <div className="col-6">
-                <label>FQDN Input</label>
-                <textarea id="configInput" className="textFields" value={fqdnList} onChange={handleChange}></textarea>
-                </div>
-                <div className="col-6">
-                <label>Configuration Output</label>
-                <textarea id="configOutput" className="textFields" defaultValue={fqdnList}></textarea>
-                </div>
-            </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-        </>
+    // Test Update
+    // Test Update 2
+    return ( <
+        >
+        <
+        Button variant = "primary"
+        onClick = { handleShow } >
+        Launch demo modal <
+        /Button> <
+        Modal show = { showModal }
+        onHide = { handleClose } >
+        <
+        Modal.Header closeButton >
+        <
+        Modal.Title > Whitelist Config Generator < /Modal.Title> <
+        /Modal.Header> <
+        Modal.Body >
+        <
+        div className = "row" >
+        <
+        div className = "col-6" >
+        <
+        label > FQDN Input < /label> <
+        textarea id = "configInput"
+        className = "textFields"
+        value = { fqdnList }
+        onChange = { handleChange } > < /textarea> <
+        /div> <
+        div className = "col-6" >
+        <
+        label > Configuration Output < /label> <
+        textarea id = "configOutput"
+        className = "textFields"
+        defaultValue = { fqdnList } > < /textarea> <
+        /div> <
+        /div> <
+        /Modal.Body> <
+        Modal.Footer >
+        <
+        Button variant = "secondary"
+        onClick = { handleClose } >
+        Close <
+        /Button> <
+        Button variant = "primary"
+        onClick = { handleClose } >
+        Save Changes <
+        /Button> <
+        /Modal.Footer> <
+        /Modal> <
+        />
     )
 }
 
@@ -67,7 +84,7 @@ function parseConfig2() {
 
 
 
-*/    //    var fqdnList = document.getElementById("configInput").value.split("\n");
+*/ //    var fqdnList = document.getElementById("configInput").value.split("\n");
 //    var pushFQDN = ["config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n"];
 //    for (i = 0; i < fqdnList.length; i++) {
 //      var y = "edit 0\nset url \"" + fqdnList[i] + "\"\nset type wildcard\nset action allow\nnext\n";                                                  
@@ -82,4 +99,3 @@ function parseConfig2() {
 //const handleChange = (event) => {
 //    setValue(event.target.value);
 //};
-
