@@ -19,7 +19,7 @@ function ToolFQDN() {
 
     var [fqdnList, setFqdnList] = useState("");
     var handleChange = e => {
-      setFqdnList(e.target.value)
+        setFqdnList(e.target.value)
     }
 
 // Test Update
@@ -70,7 +70,7 @@ All document.getElementById's
 
 
 
-*/    //    var fqdnList = document.getElementById("configInput").value.split("\n");
+*/ //    var fqdnList = document.getElementById("configInput").value.split("\n");
 //    var pushFQDN = ["config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n"];
 //    for (i = 0; i < fqdnList.length; i++) {
 //      var y = "edit 0\nset url \"" + fqdnList[i] + "\"\nset type wildcard\nset action allow\nnext\n";                                                  
@@ -85,4 +85,3 @@ All document.getElementById's
 //const handleChange = (event) => {
 //    setValue(event.target.value);
 //};
-
