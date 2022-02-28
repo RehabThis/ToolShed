@@ -1,25 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import { Button, Modal } from 'react-bootstrap'
 //import ModalNew from './ModalNew'
 
 function ToolFQDN() {
-    const [showModal, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const [fqdnList, setFqdnList] = useState("")
-    var fqdnMax = [];
-    const handleChange = e => {
+    var [showModal, setShow] = useState(false);
+    var handleClose = () => setShow(false);
+    var handleShow = () => setShow(true);
+
+    var [fqdnList, setFqdnList] = useState("");
+    var handleChange = e => {
       setFqdnList(e.target.value)
-      fqdnMax.push = e.target.value;
     }
-    const handleUpdate = e => {
-      if (fqdnMax != fqdnList) {
-        fqdnMax = fqdnList;
-      }
-    }
-    const [configOutput, setConfigOutput] = useState(fqdnMax.map((fqdn) => { 
-      return fqdn + " bid daddy";
-    }))
 
 
     return (
@@ -39,7 +30,7 @@ function ToolFQDN() {
                 </div>
                 <div className="col-6">
                 <label>Configuration Output</label>
-                <textarea id="configOutput" className="textFields" value={fqdnMax} onChange={handleUpdate}></textarea>
+                <textarea id="configOutput" className="textFields" defaultValue={{fqdnList}.split("\n")} ></textarea>
                 </div>
             </div>
         </Modal.Body>
