@@ -1,6 +1,16 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import { Button, Modal } from 'react-bootstrap'
 //import ModalNew from './ModalNew'
+
+function parseConfig2(fqdnArray) {
+  var fqdnList = fqdnArray.split("\n");
+//  var pushFQDN = ["config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n"];
+  return fqdnList.map((e) => {
+    return "edit 0\nset url \"" + e + "\"\nset type wildcard\nset action allow\nnext\n";
+  }).join("");
+  //return fqdnList.join("block");
+}
+
 
 function ToolFQDN() {
     var [showModal, setShow] = useState(false);
@@ -27,11 +37,11 @@ function ToolFQDN() {
             <div className="row">
                 <div className="col-6">
                 <label>FQDN Input</label>
-                <textarea id="configInput" className="textFields" value={fqdnList} onChange={handleChange}></textarea>
+                <textarea className="textFields" value={fqdnList} onChange={handleChange}></textarea>
                 </div>
                 <div className="col-6">
                 <label>Configuration Output</label>
-                <textarea id="configOutput" className="textFields" defaultValue={fqdnList}></textarea>
+                <textarea className="textFields" defaultValue={"config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n" + parseConfig2(fqdnList)}></textarea>
                 </div>
             </div>
         </Modal.Body>
@@ -40,7 +50,7 @@ function ToolFQDN() {
             Close
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Copy to Clipboard
           </Button>
         </Modal.Footer>
       </Modal>
@@ -53,16 +63,9 @@ export default ToolFQDN
 
 /* 
 
-function parseConfig2() {
-            var fqdnList = document.getElementById("configInput").value.split("\n");
-            var pushFQDN = ["config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n"];
-            for (i = 0; i < fqdnList.length; i++) {
-                var y = "edit 0\nset url \"" + fqdnList[i] + "\"\nset type wildcard\nset action allow\nnext\n";
-                                                                
-                                                                pushFQDN.push(y);
-                                                                }
-                                                document.getElementById("configOutput").value = pushFQDN.join("");
-        }
+All document.getElementById's 
+
+
 
 
 
