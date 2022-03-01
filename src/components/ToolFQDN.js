@@ -5,9 +5,10 @@ import { Button, Modal } from 'react-bootstrap'
 function parseConfig2(fqdnArray) {
   var fqdnList = fqdnArray.split("\n");
 //  var pushFQDN = ["config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n"];
-  return fqdnList.map((e) => {
+  var ret = fqdnList.map((e) => {
     return "edit 0\nset url \"" + e + "\"\nset type wildcard\nset action allow\nnext\n";
   }).join("");
+  return "config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n" + ret;
   //return fqdnList.join("block");
 }
 
@@ -18,11 +19,15 @@ function ToolFQDN() {
     var handleShow = () => setShow(true);
 
     var [fqdnList, setFqdnList] = useState("");
+    var [output, setOutput] = useState("");
     var handleChange = e => {
-        setFqdnList(e.target.value)
+        setFqdnList(e.target.value);
+        setOutput(parseConfig2(fqdnList));
+    } 
+    var handleOutput = e => {
+      setOutput(parseConfig2(fqdnList));
     }
 
-// Test Update
 
     return (
         <>
@@ -41,16 +46,16 @@ function ToolFQDN() {
                 </div>
                 <div className="col-6">
                 <label>Configuration Output</label>
-                <textarea className="textFields" defaultValue={"config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n" + parseConfig2(fqdnList)}></textarea>
+                <textarea className="textFields" value={output} onChange={handleOutput}></textarea>
                 </div>
             </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
-          </Button>
+          </Button> 
           <Button variant="primary" onClick={handleClose}>
-            Copy to Clipboard
+            Copy to Clipboard 
           </Button>
         </Modal.Footer>
       </Modal>
@@ -85,3 +90,15 @@ All document.getElementById's
 //const handleChange = (event) => {
 //    setValue(event.target.value);
 //};
+
+
+
+
+/*
+
+Flags variable bool
+  return if bool = true then apply X code
+  state tracking on of the form fields
+
+
+*/
