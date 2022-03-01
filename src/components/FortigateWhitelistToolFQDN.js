@@ -12,8 +12,9 @@ function parseConfig2(fqdnArray) {
   //return fqdnList.join("block");
 }
 
-function handleCopy(output) {
-  return navigator.clipboard.writeText(output);
+function handleCopy(handleOutput) {
+  navigator.clipboard.writeText(handleOutput);
+  console.log(handleOutput);
 }
 
 function FortigateWhitelistToolFQDN() {
@@ -27,6 +28,8 @@ function FortigateWhitelistToolFQDN() {
         setFqdnList(e.target.value);
         setOutput(parseConfig2(fqdnList));
     } 
+
+
     var handleOutput = e => {
       setOutput(parseConfig2(fqdnList));
     }
