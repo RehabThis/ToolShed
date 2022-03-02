@@ -35,9 +35,9 @@ function FortigateWhitelistToolFQDN() {
     }
 
     return (
-        <>
-        <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
+        <div className="appContainer">
+        <Button variant="info" onClick={handleShow}>
+          Whitelist
         </Button>
         <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -56,15 +56,15 @@ function FortigateWhitelistToolFQDN() {
             </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="info" onClick={handleClose}>
             Close
           </Button> 
-          <Button variant="primary" onClick={handleCopy}>
+          <Button variant="info" onClick={handleCopy}>
             Copy to Clipboard 
           </Button>
         </Modal.Footer>
       </Modal>
-        </>
+        </div>
     )
 }
 

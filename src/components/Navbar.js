@@ -1,24 +1,33 @@
 import React from 'react'
+import {Button} from 'react-bootstrap'
+import Lumen_Technologies_Logo from '../imgs/Lumen_Technologies_Logo.png'
 
 
 function Navbar() {
     return (  
-        <nav>
-            <div className="row"></div>
-                <div className="col_1">
-                    <logo>
-                        <img src="#"></img>
-                    </logo>
-                </div>
-                <div className="col_2">
-                    <ul>
-                        <li>Juniper</li>
-                        <li>Cisco</li>
-                        <li>Fortigate</li>
-                        <li>Palo Alto</li>
-                    </ul>
-                </div>
-        </nav>
+        <>
+        <div className="appContainer">
+            <div id="logoCol">
+                <logo className="logo-main">
+                    <h1 className="appTitle">ToolShed</h1>
+                    <p className="subTitle">A Networking Resource</p>
+                    <p className="subTitle">created by</p>
+                    <img src={Lumen_Technologies_Logo} className="logoImg"></img>
+                </logo>
+            </div>
+            <div id="navCol">
+                <h2 id="vendorChoice" className="appTitle">Choose Your Vendor:</h2>
+                <ul>
+                    <Button className="navLinks" variant="info"><li>Juniper</li></Button>
+                    <Button className="navLinks" variant="info"><li>Fortigate</li></Button>
+                </ul>
+                <ul>    
+                    <Button className="navLinks" variant="info"><li>Cisco</li></Button>
+                    <Button className="navLinks" variant="info"><li>Palo Alto</li></Button>  
+                </ul>
+            </div>
+        </div>
+        </>
     )
 }
 

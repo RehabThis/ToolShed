@@ -1,28 +1,120 @@
+/* Start Imports */
+/* Start of Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/* End Imports */
+/* End of Google Fonts */
 
+/* Start of Globals */
 * {
   font-family: 'Press Start 2P', mono;
 }
+/* End of Globals */
 
-
-.App {
-  height: 100vh;
-  background: #61dafb;
-}
-
-
-
+/* Start of Custom Grid Layout */
 .row {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-around;
-  flex-direction: row;
 }
 
+.col_2 {
+  flex-basis: 50%;
+}
+
+.col_3 {
+  flex-basis: 33%;
+}
+
+.col_4 {
+  flex-basis: 25%;
+}
+/* End of Custom Grid Layout */
+
+/* Start of App Styling */
+.App {
+  height: 100vh;
+  background: #2c165f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* End of App Styling */
+
+/* Start of Navigation Styling */
+.appContainer {
+  width: 20vw;
+  height: 80vh;
+  border: 3px solid white;
+  border-radius: 5%;
+  background: url(./imgs/appContainerBG.jpg) rgba(0, 0, 0, 0.4);
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0px 5px 25px 25px rgba(255, 255, 255, 0.2);
+}
+
+.spacer {
+  border-top: 1px solid white;
+}
+
+logo img {
+  max-width: 100%;
+/*  background: rgba(255, 255, 255, 0.1); */
+}
+
+.appTitle {
+  color: white;
+}
+
+.subTitle {
+  font-size: 10px;
+  color: white;
+  margin-bottom: 0;
+}
+
+#navCol {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#vendorChoice {
+  font-size: 1em;
+  flex-basis: 100%;
+}
+
+#navCol ul {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 4%;
+}
+.navLinks {
+  list-style: none;
+}
+
+.navLinks.btn-info {
+  border: 4px double rgb(0, 0, 0);
+  border-radius: 5%;
+}
+
+button li {
+  color: #fff;
+}
+
+/* End of Navigation Styling */
+
+
+/* Start of Modal Styling */
 .modal-dialog {
   max-width: 80% !important;
 }
+/* End of Modal Styling */
 
+/* Start of Text Area for Whitelist */
 .textFields {
   height: 250px;
   max-height: 250px;
@@ -30,7 +122,9 @@
   overflow-y: scroll;
   resize: none;
 }
+/* End of Text Area for Whitelist */
 
+/* Everything below this line is Stock Create-React-App Styling */
 .App {
   text-align: center;
 }
