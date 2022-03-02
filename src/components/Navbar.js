@@ -7,7 +7,7 @@ function Navbar() {
             <div className="row"></div>
                 <div className="col_1">
                     <logo>
-                        <img src="#">
+                        <img src="#"></img>
                     </logo>
                 </div>
                 <div className="col_2">
@@ -21,4 +21,5 @@ function Navbar() {
         </nav>
     )
 }
+
 export default Navbar
