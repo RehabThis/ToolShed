@@ -10,7 +10,6 @@ function Navbar() {
                         <img src="#">
                     </logo>
                 </div>
-
                 <div className="col_2">
                     <ul>
                         <li>Juniper</li>
@@ -21,5 +20,5 @@ function Navbar() {
                 </div>
         </nav>
     )
-
+}
 export default Navbar
