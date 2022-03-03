@@ -37,6 +37,10 @@ function FortigateWhitelistToolFQDN() {
 
     return (
         <div className="appContainer">
+          
+          <h1 className="appTitle">FortiWhiteList Config Gen</h1>
+        <p className="subTitle">This tool will generate the configuration input required to apply a new URL to an existing Fortigate Content Filter. Input a list of FQDN's on the left text area and the right will auto-populate with the template. You must drop down a line after each FQDN including the last one.</p>
+         
         <Button variant="info" className="navLinks" onClick={handleShow}><li>Whitelist</li></Button>
         <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
