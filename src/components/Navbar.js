@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button} from 'react-bootstrap'
-import Lumen_Technologies_Logo from '../imgs/Lumen_Technologies_Logo.png'
+import Me from '../imgs/Me.jpg'
 import { Link } from 'react-router-dom'
 
 
@@ -13,7 +13,7 @@ function Navbar() {
                     <h1 className="appTitle">ToolShed</h1>
                     <p className="subTitle">A Networking Resource</p>
                     <p className="subTitle">created by</p>
-                    <img src={Lumen_Technologies_Logo} className="logoImg"></img>
+                    <img src={Me} className="logoImg"></img>
                 </logo>
             </div>
             <div id="navCol">
