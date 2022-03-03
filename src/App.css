@@ -30,9 +30,9 @@
 /* End of Custom Grid Layout */
 
 /* Start of App Styling */
-.App {
+body {
   height: 100vh;
-  background: #2c165f;
+  background: #2c165f !important;
   display: flex;
   align-items: center;
   justify-content: center;
