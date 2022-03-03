@@ -15,9 +15,9 @@ function Fortigate() {
                     <img src={Lumen_Technologies_Logo} className="logoImg"></img> */}
                 </logo>
             </div>
-            <div id="navCol">
+            <div id="navCol" className="fortiCol">
                 <ul>
-                    <Link to="/vendor/fortigate/whitelist-tool/"><Button className="navLinks" variant="info"><li>Whitelist</li></Button></Link>
+                    <Button className="navLinks" variant="info"><Link to="/vendor/fortigate/whitelist-tool/"><li>Whitelist</li></Link></Button>
                     <Button className="navLinks" variant="info"><li>FW Rule</li></Button>
                     <Button className="navLinks" variant="info"><li>Route Map</li></Button>
                     <Button className="navLinks" variant="info"><li>Static Route</li></Button> 

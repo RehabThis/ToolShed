@@ -8,6 +8,7 @@
 * {
   font-family: 'Press Start 2P', mono;
 }
+
 /* End of Globals */
 
 /* Start of Custom Grid Layout */
@@ -55,6 +56,16 @@ body {
   box-shadow: 0px 5px 25px 25px rgba(255, 255, 255, 0.2);
 }
 
+.navLinks a {
+  text-decoration: none;
+}
+
+.backButton {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
 .spacer {
   border-top: 1px solid white;
 }
@@ -87,6 +98,7 @@ logo img {
 #navCol ul {
   flex-basis: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 0;
   margin: 0;
@@ -104,6 +116,43 @@ logo img {
 button li {
   color: #fff;
 }
+
+.fortiCol {
+  flex-wrap: nowrap !important;
+}
+/* Start of Mobile Nav Styling */
+@media all and (max-width: 1919px) {
+  
+}
+
+@media all and (min-width:1440) and (max-width: 1919px) {
+	.appContainer {
+		width: 25vw !important;
+		height: 90vh;
+	}
+}
+
+@media all and (min-width:980) and (max-width: 1439px) {
+	.appContainer {
+		width: 40vw !important;
+		height: 90vh;
+	}
+}
+
+@media all and (min-width:768) and (max-width: 979px) {
+	.appContainer {
+		width: 50vw !important;
+		height: 90vh;
+	}
+}
+
+@media all and (max-width: 425px) {
+	.appContainer {
+		width: 90vw;
+		height: 90vh;
+	}
+}
+/* End Mobile Nav Styling */
 
 /* End of Navigation Styling */
 

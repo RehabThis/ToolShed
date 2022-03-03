@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Button, Modal } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 //import ModalNew from './ModalNew'
 
 function parseConfig2(fqdnArray) {
@@ -18,7 +19,7 @@ function handleCopy(handleOutput) {
 }
 
 function FortigateWhitelistToolFQDN() {
-    var [showModal, setShow] = useState(false);
+    var [showModal, setShow] = useState(true);
     var handleClose = () => setShow(false);
     var handleShow = () => setShow(true);
 
@@ -36,9 +37,7 @@ function FortigateWhitelistToolFQDN() {
 
     return (
         <div className="appContainer">
-        <Button variant="info" onClick={handleShow}>
-          Whitelist
-        </Button>
+        <Button variant="info" className="navLinks" onClick={handleShow}><li>Whitelist</li></Button>
         <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Whitelist Config Generator</Modal.Title>
@@ -64,6 +63,9 @@ function FortigateWhitelistToolFQDN() {
           </Button>
         </Modal.Footer>
       </Modal>
+      <div className="backButton">
+      <Link to="/vendor/fortigate"><Button className="navLinks" variant="info"><li>Back</li></Button></Link>
+      </div>
         </div>
     )
 }
