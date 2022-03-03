@@ -27,7 +27,12 @@ function FortigateWhitelistToolFQDN() {
   var [output, setOutput] = useState("")
   var handleChange = (e) => {
     setFqdnList(e.target.value)
-    setOutput(parseConfig2(fqdnList))
+    if (fqdnList != null) {
+      setOutput(parseConfig2(fqdnList))
+    } else {
+      fqdnList = ""
+      setOutput(parseConfig2(fqdnList))
+    }
   }
 
   var handleOutput = (e) => {
