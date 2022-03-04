@@ -13,9 +13,9 @@ function parseConfig2(fqdnArray) {
   return 'config webfilter urlfilter\nedit 2\nset name "Environment_URL_Filter"\nconfig entries\n' + ret + "end"
 }
 
-function handleCopy(handleOutput) {
-  navigator.clipboard.writeText(handleOutput)
-  console.log(handleOutput)
+
+function handleCopy(textArea) {
+  navigator.clipboard.writeText(textArea);
 }
 
 function FortigateWhitelistToolFQDN() {
@@ -30,8 +30,7 @@ function FortigateWhitelistToolFQDN() {
     if (fqdnList != null) {
       setOutput(parseConfig2(fqdnList))
     } else {
-      fqdnList = ""
-      setOutput(parseConfig2(fqdnList))
+      setOutput("")
     }
   }
 
@@ -70,7 +69,7 @@ function FortigateWhitelistToolFQDN() {
           <Button variant="info" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="info" onClick={handleCopy}>
+          <Button variant="info" onClick={handleCopy(output)}>
             Copy to Clipboard
           </Button>
         </Modal.Footer>
