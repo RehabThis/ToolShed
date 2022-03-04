@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
 import { Link } from "react-router-dom"
-//import ModalNew from './ModalNew'
 
 function parseConfig2(fqdnArray) {
   var fqdnList = fqdnArray.split("\n")
@@ -13,9 +12,8 @@ function parseConfig2(fqdnArray) {
   return 'config webfilter urlfilter\nedit 2\nset name "Environment_URL_Filter"\nconfig entries\n' + ret + "end"
 }
 
-
 function handleCopy(textArea) {
-  navigator.clipboard.writeText(textArea);
+  navigator.clipboard.writeText(textArea)
 }
 
 function FortigateWhitelistToolFQDN() {
@@ -86,37 +84,3 @@ function FortigateWhitelistToolFQDN() {
 }
 
 export default FortigateWhitelistToolFQDN
-
-/* 
-
-All document.getElementById's 
-
-
-
-
-
-
-*/ //    var fqdnList = document.getElementById("configInput").value.split("\n");
-//    var pushFQDN = ["config webfilter urlfilter\nedit 2\nset name \"Environment_URL_Filter\"\nconfig entries\n"];
-//    for (i = 0; i < fqdnList.length; i++) {
-//      var y = "edit 0\nset url \"" + fqdnList[i] + "\"\nset type wildcard\nset action allow\nnext\n";
-//        pushFQDN.push(y);
-//    }
-//    document.getElementById("configOutput").value = pushFQDN.join("");
-
-//var fqdnInput = configInput.value;
-
-//const [value, setValue] = useState(props.name);
-
-//const handleChange = (event) => {
-//    setValue(event.target.value);
-//};
-
-/*
-
-Flags variable bool
-  return if bool = true then apply X code
-  state tracking on of the form fields
-
-
-*/
