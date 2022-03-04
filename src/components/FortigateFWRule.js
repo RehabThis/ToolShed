@@ -7,14 +7,26 @@ function handleCopy(textArea) {
 }
 
 function FortigateFWRule() {
+  /* State Controls */
   var [showModal, setShow] = useState(true)
   var handleClose = () => setShow(false)
   var handleShow = () => setShow(true)
   var handleShowSettings = () => setShow(true)
+  var [portCreationReq, setPortCreation] = useState("")
 
-  /* Logic Variables */
-  var vdomTotal
-  var vdomNames = []
+  var [state, setState] = useState({
+    portCreationReq: "",
+    vdomTotal: "",
+  })
+
+  var handleChange = (e) => {
+    var value = e.target.value
+    setState({
+      ...state,
+      [e.target.name]: value,
+    })
+  }
+  /* End State Controls */
 
   return (
     <div id="fortigateFWrule" className="appContainer">
@@ -39,7 +51,9 @@ function FortigateFWRule() {
         <Modal.Body>
           <div className="row">
             <form id="fwRuleForm">
-              <label>Configuration Settings</label>
+              <label>
+                Configuration Settings <p></p>
+              </label>
               {/* <textarea className="textFields" value={output} onChange={handleOutput}></textarea> */}
               {/* 
                   var pushOutputFWSkeleton = [];
@@ -50,7 +64,7 @@ function FortigateFWRule() {
                   var newPort; 
                 */}
               <label>
-                Please advise the total number of VDOMs required for the new policy.<input type="text" placeholder="Example: 35"></input>
+                Please advise the total number of VDOMs required for the new policy.<input name="vdomTotal" onChange={handleChange} value={state.vdomTotal} type="text" placeholder="Example: 35"></input>
               </label>
               <label>
                 VDOM Name:<input type="text" placeholder="Example: Customer-VDOM-355"></input>
@@ -61,13 +75,23 @@ function FortigateFWRule() {
               <label>
                 Please advise if this is to allow or deny traffic.
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="allowRule">Allow</option>
                   <option value="denyRule">Deny</option>
                 </select>
               </label>
               <label>
+                Do you require a new custom service port or port group?
+                <select name="portCreationReq" value={state.portCreationReq} onChange={handleChange}>
+                  <option value="defaultSelect">-- Please Choose</option>
+                  <option value="newPortYes">Yes</option>
+                  <option value="newPortNo">No</option>
+                </select>
+              </label>
+              <label>
                 TCP, UDP, or Both?
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="TCP">TCP</option>
                   <option value="UDP">UDP</option>
                   <option value="Both">Both</option>
@@ -75,8 +99,9 @@ function FortigateFWRule() {
                 </select>
               </label>
               <label>
-                Would you like these to be added to a Service Group?
+                Would you like these ports to be added to a Service Group?
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="srvGrpYes">Yes</option>
                   <option value="srvGrpNo">No</option>
                 </select>
@@ -93,6 +118,7 @@ function FortigateFWRule() {
               <label>
                 Do the source address IP objects exist currently?
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="srcYes">Yes</option>
                   <option value="srcNo">No</option>
                 </select>
@@ -104,6 +130,7 @@ function FortigateFWRule() {
               <label>
                 Would you like to create a new object group for the Source IPs?
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="srcAddYes">Yes</option>
                   <option value="srcAddNo">No</option>
                 </select>
@@ -111,6 +138,7 @@ function FortigateFWRule() {
               <label>
                 Do the destination address IP objects exist currently?
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="dstYes">Yes</option>
                   <option value="dstNo">No</option>
                 </select>
@@ -122,6 +150,7 @@ function FortigateFWRule() {
               <label>
                 Would you like to create a new object group for the Destination IPs?
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="dstAddYes">Yes</option>
                   <option value="dstAddNo">No</option>
                 </select>
@@ -129,6 +158,7 @@ function FortigateFWRule() {
               <label>
                 Would you like the rule enabled upon entry?
                 <select>
+                  <option value="defaultSelect">-- Please Choose</option>
                   <option value="ruleEnabled">Yes</option>
                   <option value="ruleDisabled">No</option>
                 </select>

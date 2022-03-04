@@ -262,8 +262,11 @@ button li {
 /* Fortigate FW Rule */
 
 .modal {
-  height: 50vh !important;
-  overflow-y: scroll;
+  max-height: 80vh !important;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
 }
 
 #fortigateFWrule {
@@ -283,8 +286,14 @@ label input {
   display: block !important;
   margin-top: 0.5%;
   padding: 1%;
-  max-width: 80%;
-  min-width: 50%;
+  max-width: 40%;
+  min-width: 20%;
+}
+
+label select {
+  padding: 0.5%;
+  margin-left: 1%;
+  max-width: 20%;
 }
 
 /* End Fortigate FW Rule */
