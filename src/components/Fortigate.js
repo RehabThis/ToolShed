@@ -1,6 +1,5 @@
 import React from "react"
 import { Button } from "react-bootstrap"
-import Lumen_Technologies_Logo from "../imgs/Lumen_Technologies_Logo.png"
 import { Link } from "react-router-dom"
 
 function Fortigate() {
