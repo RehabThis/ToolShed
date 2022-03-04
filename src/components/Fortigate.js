@@ -22,7 +22,9 @@ function Fortigate() {
                 </Link>
               </Button>
               <Button className="navLinks" variant="info">
-                <li>FW Rule</li>
+                <Link to="/vendor/fortigate/fw-rule-gen/">
+                  <li>FW Rule</li>
+                </Link>
               </Button>
               <Button className="navLinks" variant="info">
                 <li>Route Map</li>

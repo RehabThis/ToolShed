@@ -259,6 +259,36 @@ button li {
 
 /* End of Text Area for Whitelist */
 
+/* Fortigate FW Rule */
+
+.modal {
+  height: 50vh !important;
+  overflow-y: scroll;
+}
+
+#fortigateFWrule {
+  font-size: 0.2rem !important;
+}
+
+#fwRuleForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#fwRuleForm label {
+  margin-bottom: 2%;
+}
+
+label input {
+  display: block !important;
+  margin-top: 0.5%;
+  padding: 1%;
+  max-width: 80%;
+  min-width: 50%;
+}
+
+/* End Fortigate FW Rule */
+
 /* Everything below this line is Stock Create-React-App Styling */
 
 .App {

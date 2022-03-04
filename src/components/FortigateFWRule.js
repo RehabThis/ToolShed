@@ -17,7 +17,7 @@ function FortigateFWRule() {
   var vdomNames = []
 
   return (
-    <div className="appContainer">
+    <div id="fortigateFWrule" className="appContainer">
       <div>
         <h1 className="appTitle">FW Rule Generator</h1> <br />
         <p className="subTitle">This tool will generate the configuration necessary for Fortigate Firewall Policy creation. This will create a policy based on the variables provided in "Settings". </p>
@@ -32,17 +32,16 @@ function FortigateFWRule() {
         </Link>
       </div>
 
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal id="fwRuleModal" show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>FW Rule Generator</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="row">
-            <div className="col-12">
-              <form>
-                <label>Configuration Settings</label>
-                {/* <textarea className="textFields" value={output} onChange={handleOutput}></textarea> */}
-                {/* 
+            <form id="fwRuleForm">
+              <label>Configuration Settings</label>
+              {/* <textarea className="textFields" value={output} onChange={handleOutput}></textarea> */}
+              {/* 
                   var pushOutputFWSkeleton = [];
                   var ruleName = prompt("What is the Firewall Rule Name?");
                   var rulePortTCPUDP = prompt("Is it TCP or UDP or BOTH? Answer in caps");
@@ -50,55 +49,101 @@ function FortigateFWRule() {
                   var rulePortRange = prompt("What is the range? eg 15000-15010 or spaced 1550 1650 1300-1301 20");
                   var newPort; 
                 */}
-                <label>
-                  Please advise the total number of VDOMs required for the new policy.<input type="text" placeholder="Example: 35"></input>
-                </label>
-                <label>
-                  VDOM Name:<input type="text" placeholder="Example: Customer-VDOM-355"></input>
-                </label>
-                <label>
-                  Firewall Rule Name:<input type="text" placeholder="Example: Windows-Update-Service"></input>
-                </label>
-                <label>
-                  TCP, UDP, or Both?
-                  <select>
-                    <option value="TCP">TCP</option>
-                    <option value="UDP">UDP</option>
-                    <option value="Both">Both</option>
-                    <option value="Both">Mixed</option>
-                  </select>
-                </label>
-                <label>
-                  Would you like these to be added to a Service Group?:
-                  <select>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                  </select>
-                </label>
-                <label>
-                  Comma Separated Ports, Hyphen for Range:<input type="text" placeholder="Example: 1550, 1650, 1300-1301, 20"></input>
-                </label>
-                <label>
-                  Firewall Rule Name:<input type="text" placeholder="Example: Windows-Update-Service"></input>
-                </label>
-                <label>
-                  Firewall Rule Name:<input type="text" placeholder="Example: Windows-Update-Service"></input>
-                </label>
-                <label>
-                  Firewall Rule Name:<input type="text" placeholder="Example: Windows-Update-Service"></input>
-                </label>
-                <label>
-                  Firewall Rule Name:<input type="text" placeholder="Example: Windows-Update-Service"></input>
-                </label>
-              </form>
-            </div>
+              <label>
+                Please advise the total number of VDOMs required for the new policy.<input type="text" placeholder="Example: 35"></input>
+              </label>
+              <label>
+                VDOM Name:<input type="text" placeholder="Example: Customer-VDOM-355"></input>
+              </label>
+              <label>
+                Firewall Rule Name:<input type="text" placeholder="Example: Windows-Update-Service"></input>
+              </label>
+              <label>
+                Please advise if this is to allow or deny traffic.
+                <select>
+                  <option value="allowRule">Allow</option>
+                  <option value="denyRule">Deny</option>
+                </select>
+              </label>
+              <label>
+                TCP, UDP, or Both?
+                <select>
+                  <option value="TCP">TCP</option>
+                  <option value="UDP">UDP</option>
+                  <option value="Both">Both</option>
+                  <option value="Both">Mixed</option>
+                </select>
+              </label>
+              <label>
+                Would you like these to be added to a Service Group?
+                <select>
+                  <option value="srvGrpYes">Yes</option>
+                  <option value="srvGrpNo">No</option>
+                </select>
+              </label>
+              <label>
+                Comma Separated Ports, Hyphen for Range:<input type="text" placeholder="Example: 1550, 1650, 1300-1301, 20"></input>
+              </label>
+              <label>
+                What is the Source Interface Name? (srcintf):<input type="text" placeholder="Example: Inside_Vlan"></input>
+              </label>
+              <label>
+                What is the Destination Interface Name? (dstintf):<input type="text" placeholder="Example: Outside_Vlan"></input>
+              </label>
+              <label>
+                Do the source address IP objects exist currently?
+                <select>
+                  <option value="srcYes">Yes</option>
+                  <option value="srcNo">No</option>
+                </select>
+              </label>
+              <label>
+                Please provide the name of the existing Source IP Object(s), Object-Groups (one per line w/quotes around them)?
+                <textarea className="textFields"></textarea>
+              </label>
+              <label>
+                Would you like to create a new object group for the Source IPs?
+                <select>
+                  <option value="srcAddYes">Yes</option>
+                  <option value="srcAddNo">No</option>
+                </select>
+              </label>
+              <label>
+                Do the destination address IP objects exist currently?
+                <select>
+                  <option value="dstYes">Yes</option>
+                  <option value="dstNo">No</option>
+                </select>
+              </label>
+              <label>
+                Please provide the name of the existing Destination IP Object(s), Object-Groups (one per line w/quotes around them)?
+                <textarea className="textFields"></textarea>
+              </label>
+              <label>
+                Would you like to create a new object group for the Destination IPs?
+                <select>
+                  <option value="dstAddYes">Yes</option>
+                  <option value="dstAddNo">No</option>
+                </select>
+              </label>
+              <label>
+                Would you like the rule enabled upon entry?
+                <select>
+                  <option value="ruleEnabled">Yes</option>
+                  <option value="ruleDisabled">No</option>
+                </select>
+              </label>
+              <label>
+                Please provide a description of the rule under 28 characters:<input type="text" placeholder="Example: WSUS Inside_Vlan to Outside_Vlan"></input>
+              </label>
+            </form>
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="info" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="info" onClick={handleCopy(output)}>
+          <Button variant="info" onClick={handleCopy("")}>
             Copy to Clipboard
           </Button>
         </Modal.Footer>
