@@ -16,7 +16,7 @@ function FortigateFWRule() {
   var [state, setState] = useState({
     portCreationReq: "",
     vdomTotal: "",
-    isNotHidden: "",
+    isShown: "",
     isHidden: "",
   })
 
@@ -55,15 +55,6 @@ function FortigateFWRule() {
               <label>
                 Configuration Settings <p></p>
               </label>
-              {/* <textarea className="textFields" value={output} onChange={handleOutput}></textarea> */}
-              {/* 
-                  var pushOutputFWSkeleton = [];
-                  var ruleName = prompt("What is the Firewall Rule Name?");
-                  var rulePortTCPUDP = prompt("Is it TCP or UDP or BOTH? Answer in caps");
-                  var portName = prompt("What is the name of the port object? eg TrendMicroInbound");
-                  var rulePortRange = prompt("What is the range? eg 15000-15010 or spaced 1550 1650 1300-1301 20");
-                  var newPort; 
-                */}
               <label name="vdomTotal">
                 Please advise the total number of VDOMs required for the new policy.<input name="vdomTotal" onChange={handleChange} value={state.vdomTotal} type="text" placeholder="Example: 35"></input>
               </label>
@@ -89,9 +80,9 @@ function FortigateFWRule() {
                   <option value="false">No</option>
                 </select>
               </label>
-              <label name="protocolList" className={state.portCreationReq ? "isHidden" : undefined} onChange={handleChange}>
+              <label name="protocolList" className={state.portCreationReq ? "isShown" : "isHidden"} onChange={handleChange}>
                 TCP, UDP, or Both?
-                <select name="protocolList" className={state.portCreationReq ? "isHidden" : undefined} onChange={handleChange}>
+                <select name="protocolList" className={state.portCreationReq ? "isShown" : "isHidden"} onChange={handleChange}>
                   <option value="defaultSelect">-- Please Choose</option>
                   <option value="TCP">TCP</option>
                   <option value="UDP">UDP</option>

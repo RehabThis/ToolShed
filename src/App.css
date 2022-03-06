@@ -307,6 +307,9 @@ label select {
 .isHidden {
   display: none;
 }
+.isShown {
+  display: block;
+}
 
 .App-logo {
   height: 40vmin;
