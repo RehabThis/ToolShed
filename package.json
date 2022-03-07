@@ -13,7 +13,7 @@
         "react-router-dom": "^6.2.2",
         "react-scripts": "5.0.0",
         "web-vitals": "^2.1.4",
-        "homepage": "https://rehabthis.github.io/ToolShed/"
+        "homepage": "https://rehabthis.github.io/ToolShed/docs/"
     },
     "scripts": {
         "start": "react-scripts start",
