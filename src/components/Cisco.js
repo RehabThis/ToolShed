@@ -2,7 +2,7 @@ import React from "react"
 import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
-function Fortigate() {
+function Cisco() {
   return (
     <>
       <div className="appContainer">
@@ -17,12 +17,12 @@ function Fortigate() {
           <div id="navCol" className="fortiCol">
             <ul className="navUL">
               <Button className="navLinks" variant="info">
-                <Link to="/vendor/fortigate/whitelist-tool/">
-                  <li>Whitelist</li>
+                <Link to="/vendor/cisco/static-route/">
+                  <li>Static Route</li>
                 </Link>
               </Button>
               <Button className="navLinks" variant="info">
-                <Link to="/vendor/fortigate/fw-rule-gen/">
+                <Link to="#">
                   <li>FW Rule</li>
                 </Link>
               </Button>
@@ -30,7 +30,7 @@ function Fortigate() {
                 <li>Prefix List</li>
               </Button>
               <Button className="navLinks" variant="info">
-                <li>Static Route</li>
+                <li>Whitelist</li>
               </Button>
             </ul>
             <ul className="navUL">
@@ -61,4 +61,4 @@ function Fortigate() {
   )
 }
 
-export default Fortigate
+export default Cisco

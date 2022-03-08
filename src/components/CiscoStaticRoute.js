@@ -2,55 +2,62 @@ import React, { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
-function parseConfig2(fqdnArray) {
+function parseConfig2(fqdnArray, nextHop) {
   var fqdnList = fqdnArray.split("\n")
+  var nextHopIP = nextHop
   var ret = fqdnList
     .map((e) => {
-      return 'edit 0\nset url "' + e + '"\nset type wildcard\nset action allow\nnext\n'
+      return 'ip route ' + e + " " + nextHopIP
     })
-    .join("")
-  return 'config webfilter urlfilter\nedit 2\nset name "Environment_URL_Filter"\nconfig entries\n' + ret + "end"
+    .join("\n")
+  return 'config terminal\n' + ret
 }
 
 function handleCopy(textArea) {
   navigator.clipboard.writeText(textArea)
 }
 
-function FortigateWhitelistToolFQDN() {
+function CiscoStaticRoute() {
   var [showModal, setShow] = useState(true)
   var handleClose = () => setShow(false)
   var handleShow = () => setShow(true)
   var handleShowSettings = () => setShow(true)
   var [fqdnList, setFqdnList] = useState("")
   var [output, setOutput] = useState("")
+  var [nextHop, setNextHop] = useState("")
   var handleChange = (e) => {
     setFqdnList(e.target.value)
-    setOutput(parseConfig2(fqdnList))
+  }
+  var handleNextHopChange = (e) => {
+    setNextHop(e.target.value)
+    setOutput(parseConfig2(fqdnList, nextHop))
   }
 
+
   var handleOutput = (e) => {
-    setOutput(parseConfig2(fqdnList))
+    setOutput(parseConfig2(fqdnList, nextHop))
   }
 
   return (
     <div className="appContainer">
       <div>
-        <h1 className="appTitle">WhiteListing Tool</h1> <br />
-        <p className="subTitle">This tool will generate the configuration input required to apply a new URL to an existing Fortigate Content Filter. Input a list of FQDN's on the left text area and the right will auto-populate with the template. You must drop down a line after each FQDN including the last one.</p>
+        <h1 className="appTitle">Static Route Generator</h1> <br />
+        <p className="subTitle">This tool will generate the configuration input required to apply a list of IPs to the left text area and the right text area will produce the configuration dynamically.</p>
         <br />
         <Button variant="info" className="navLinks" onClick={handleShow}>
-          <li>Whitelist</li>
+          <li>Static Route Generator</li>
         </Button>
       </div>
 
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Whitelist Config Generator</Modal.Title>
+          <Modal.Title>Static Route Config Generator</Modal.Title>
+          <input name="nextHop" value={nextHop} onChange={handleNextHopChange} type="text" placeholder="Enter your next hop IP"></input>
         </Modal.Header>
         <Modal.Body>
           <div className="row">
             <div className="col-6">
-              <label>FQDN Input</label>
+              <label>IP Subnet Input (no mask = /32)</label>
               <textarea className="textFields" value={fqdnList} onChange={handleChange}></textarea>
             </div>
             <div className="col-6">
@@ -84,4 +91,4 @@ function FortigateWhitelistToolFQDN() {
   )
 }
 
-export default FortigateWhitelistToolFQDN
+export default CiscoStaticRoute

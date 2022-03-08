@@ -38,11 +38,6 @@ function FortigateFWRule() {
         <Button variant="info" className="navLinks" onClick={handleShow}>
           <li>FW Rule Gen</li>
         </Button>
-        <Link to="/vendor/fortigate/fw-rule-gen/settings">
-          <Button variant="info" className="navLinks" onClick={handleShowSettings}>
-            <li>Settings</li>
-          </Button>
-        </Link>
       </div>
 
       <Modal id="fwRuleModal" show={showModal} onHide={handleClose}>
@@ -173,7 +168,12 @@ function FortigateFWRule() {
           </Button>
         </Modal.Footer>
       </Modal>
-      <div className="backButton">
+      <div id="backButton" className="backButton">
+      <Link to="/vendor/fortigate/fw-rule-gen/settings">
+          <Button variant="info" className="navLinks" onClick={handleShowSettings}>
+            <li>Settings</li>
+          </Button>
+        </Link>
         <Link to="/vendor/fortigate">
           <Button className="navLinks" variant="info">
             <li>Back</li>

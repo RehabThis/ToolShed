@@ -79,6 +79,7 @@ body {
   display: flex;
   flex-basis: 100%;
   justify-content: center;
+  flex-direction: column;
 }
 
 .spacer {
