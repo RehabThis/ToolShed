@@ -10,6 +10,7 @@ function parseConfig2(fqdnArray) {
     })
     .join("")
   return 'config webfilter urlfilter\nedit 2\nset name "Environment_URL_Filter"\nconfig entries\n' + ret + "end"
+  
 }
 
 function handleCopy(textArea) {
@@ -23,13 +24,16 @@ function FortigateWhitelistToolFQDN() {
   var handleShowSettings = () => setShow(true)
   var [fqdnList, setFqdnList] = useState("")
   var [output, setOutput] = useState("")
+  
   var handleChange = (e) => {
-    setFqdnList(e.target.value)
-    setOutput(parseConfig2(fqdnList))
+        setFqdnList(e.target.value)
+        setOutput(parseConfig2(e.target.value))
   }
 
+  
   var handleOutput = (e) => {
-    setOutput(parseConfig2(fqdnList))
+    console.log('nothing to see')
+    // setOutput(parseConfig2(fqdnList))
   }
 
   return (
