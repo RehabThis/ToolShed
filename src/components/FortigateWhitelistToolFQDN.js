@@ -73,7 +73,7 @@ function FortigateWhitelistToolFQDN() {
         </Modal.Footer>
       </Modal>
       <div className="backButton">
-      <Link to="/vendor/fortigate/whitelist/settings">
+      <Link to="/vendor/fortigate/whitelist-tool/">
           <Button variant="info" className="navLinks" onClick={handleShowSettings}>
             <li>Settings</li>
           </Button>
