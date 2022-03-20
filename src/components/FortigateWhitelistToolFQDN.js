@@ -32,7 +32,6 @@ function FortigateWhitelistToolFQDN() {
 
   
   var handleOutput = (e) => {
-    console.log('nothing to see')
     // setOutput(parseConfig2(fqdnList))
   }
 
