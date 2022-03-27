@@ -6,7 +6,7 @@ function Fortigate() {
   return (
     <>
       <div className="appContainer">
-        <div classNam="row">
+        <div className="row">
           <div id="logoCol">
             <logo className="logo-main">
               <h1 className="appTitle">ToolShed</h1>
