@@ -15,9 +15,10 @@ function FortigateFWRule() {
 
   var [state, setState] = useState({
     portCreationReq: "",
-    vdomTotal: "",
-    isShown: "",
-    isHidden: "",
+    protocolList: "",
+    existingPorts: "",
+    addServiceGroup: "",
+    portsList: "",
   })
 
   var handleChange = (e) => {
@@ -47,7 +48,7 @@ function FortigateFWRule() {
         <Modal.Body>
           <div className="row">
             <form id="fwRuleForm">
-              <label>
+              {/* <label>
                 Configuration Settings <p></p>
               </label>
               <label name="vdomTotal">
@@ -62,43 +63,56 @@ function FortigateFWRule() {
               <label name="allowOrDeny">
                 Please advise if this is to allow or deny traffic.
                 <select name="allowOrDeny">
-                  <option value="defaultSelect">-- Please Choose</option>
+                  <option value="undefined">-- Please Choose</option>
                   <option value="allowRule">Allow</option>
                   <option value="denyRule">Deny</option>
                 </select>
-              </label>
-              <label name="portCreationReq">
+              </label> */}
+              <label name="portCreationReq2">
                 Do you require a new custom service port or port group?
                 <select name="portCreationReq" value={state.portCreationReq} onChange={handleChange}>
-                  <option value="defaultSelect">-- Please Choose</option>
+                  <option value="undefined">-- Please Choose</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
               </label>
-              <label name="protocolList" className={state.portCreationReq ? "isShown" : "isHidden"} onChange={handleChange}>
-                TCP, UDP, or Both?
-                <select name="protocolList" className={state.portCreationReq ? "isShown" : "isHidden"} onChange={handleChange}>
-                  <option value="defaultSelect">-- Please Choose</option>
-                  <option value="TCP">TCP</option>
-                  <option value="UDP">UDP</option>
-                  <option value="Both">Both</option>
-                  <option value="Both">Mixed</option>
-                </select>
-              </label>
-              <label name="addServiceGroup">
-                Would you like these ports to be added to a Service Group or as one individual service?
-                <select name="addServiceGroup">
-                  <option value="defaultSelect">-- Please Choose</option>
-                  <option value="srvGrpYes">Group</option>
-                  <option value="srvGrpNo">Individual</option>
-                </select>
-              </label>
-              <label name="portsList">
-                Comma Separated Ports, Hyphen for Range:<input name="portsList" type="text" placeholder="Example: 1550, 1650, 1300-1301, 20"></input>
-              </label>
-              <label name="existingPorts">
-                Please provide the name of the service group or port name you want to use:<input name="existingPorts" type="text" placeholder="Example: WSUS-Ports"></input>
-              </label>
+
+              
+             { (state.portCreationReq === 'false' &&                   
+              <label name="existingPortsL">
+                Please provide the name of the service group or port name you want to use:<input name="existingPorts" type="text" placeholder="Example: WSUS-Ports" value={state.existingPorts} onChange={handleChange}></input>
+              </label> )
+              
+              ||
+            
+              (state.portCreationReq === 'true' &&
+                  <>
+                  <label name="protocolListL">
+                    TCP, UDP, or Both?
+                    <select name="protocolList" value={state.protocolList} onChange={handleChange}>
+                      <option value="undefined">-- Please Choose</option>
+                      <option value="tcpTrue">TCP</option>
+                      <option value="udpTrue">UDP</option>
+                      <option value="bothTrue">Both</option>
+                      <option value="mixedTrue">Mixed</option>
+                    </select>
+                  </label>
+                  <label name="addServiceGroupL">
+                  Would you like these ports to be added to a Service Group or as one individual service?
+                    <select name="addServiceGroup" value={state.addServiceGroup} onChange={handleChange}>
+                      <option value="undefined">-- Please Choose</option>
+                      <option value="srvGrpYes">Group</option>
+                      <option value="srvGrpNo">Individual</option>
+                    </select>
+                  </label>
+                  <label name="portsListL">
+                    Comma Separated Ports, Hyphen for Range:<input name="portsList" value={state.portsList} onChange={handleChange} type="text" placeholder="Example: 1550, 1650, 1300-1301, 20">
+                    </input>
+                </label> </> )
+
+                || ( <></> )}
+
+               {/*
               <label name="srcIntfName">
                 What is the Source Interface Name? (srcintf):<input name="srcIntfName" type="text" placeholder="Example: Inside_Vlan"></input>
               </label>
@@ -107,8 +121,8 @@ function FortigateFWRule() {
               </label>
               <label name="newSrcObjReq">
                 Do the source address IP objects exist currently?
-                <select name="newSrcObjReq">
-                  <option value="defaultSelect">-- Please Choose</option>
+                <select name="newSrcObjReq" onChange={handleChange}>
+                  <option value="undefined">-- Please Choose</option>
                   <option value="srcYes">Yes</option>
                   <option value="srcNo">No</option>
                 </select>
@@ -120,7 +134,7 @@ function FortigateFWRule() {
               <label name="newSrcObjGrpReq">
                 Would you like to create a new object group for the Source IPs?
                 <select name="newSrcObjGrpReq">
-                  <option value="defaultSelect">-- Please Choose</option>
+                  <option value="undefined">-- Please Choose</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -128,7 +142,7 @@ function FortigateFWRule() {
               <label name="newDstObjReq">
                 Do the destination address IP objects exist currently?
                 <select name="newDstObjReq">
-                  <option value="defaultSelect">-- Please Choose</option>
+                  <option value="undefined">-- Please Choose</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -140,7 +154,7 @@ function FortigateFWRule() {
               <label name="newDstObjGrpReq">
                 Would you like to create a new object group for the Destination IPs?
                 <select name="newDstObjGrpReq">
-                  <option value="defaultSelect">-- Please Choose</option>
+                  <option value="undefined">-- Please Choose</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
@@ -148,14 +162,14 @@ function FortigateFWRule() {
               <label name="ruleEnabled">
                 Would you like the rule enabled upon entry?
                 <select name="ruleEnabled">
-                  <option value="defaultSelect">-- Please Choose</option>
+                  <option value="undefined">-- Please Choose</option>
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
               </label>
               <label name="ruleDescription">
                 Please provide a description of the rule under 28 characters:<input name="ruleDescription" type="text" placeholder="Example: WSUS Inside_Vlan to Outside_Vlan"></input>
-              </label>
+              </label> */}
             </form>
           </div>
         </Modal.Body>
