@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Button, Modal } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import ClipboardCopy from './ClipboardCopy'
 
 function parseConfig2(fqdnArray) {
   var fqdnList = fqdnArray.split("\n")
@@ -11,10 +12,6 @@ function parseConfig2(fqdnArray) {
     .join("")
   return 'config webfilter urlfilter\nedit 2\nset name "Environment_URL_Filter"\nconfig entries\n' + ret + "end"
   
-}
-
-function handleCopy(textArea) {
-  navigator.clipboard.writeText(textArea)
 }
 
 function FortigateWhitelistToolFQDN() {
@@ -71,7 +68,7 @@ function FortigateWhitelistToolFQDN() {
           <Button variant="info" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="info" onClick={handleCopy(output)}>
+          <Button variant="info" onClick={ClipboardCopy(output)}>
             Copy to Clipboard
           </Button>
         </Modal.Footer>
