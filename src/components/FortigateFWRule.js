@@ -15,10 +15,13 @@ function FortigateFWRule() {
 
   var [state, setState] = useState({
     portCreationReq: "",
-    protocolList: "",
+    protocolList: "undefined",
     existingPorts: "",
-    addServiceGroup: "",
+    addServiceGroup: "undefined",
     portsList: "",
+    multiVdomQuestion: "undefined",
+    fwRuleName: "",
+    allowOrDeny: "",
   })
 
   var handleChange = (e) => {
@@ -48,27 +51,47 @@ function FortigateFWRule() {
         <Modal.Body>
           <div className="row">
             <form id="fwRuleForm">
-              {/* <label>
-                Configuration Settings <p></p>
+              <label>
+                <span style={{textDecoration: 'underline', fontSize: '1.2em',}}>FW Policy</span> 
               </label>
-              <label name="vdomTotal">
-                Please advise the total number of VDOMs required for the new policy.<input name="vdomTotal" onChange={handleChange} value={state.vdomTotal} type="text" placeholder="Example: 35"></input>
+              <label>
+                Will this be a multi-VDOM policy?
+                <select name="multiVdomQuestion" value={state.multiVdomQuestion} onChange={handleChange}>
+                  <option value="undefined">-- Please Choose</option>
+                  <option value="multiVdomYes">Yes</option>
+                  <option value="multiVdomNo">No</option>
+                </select>
               </label>
-              <label name="vdomName">
-                VDOM Name:<input name="vdomName" type="text" placeholder="Example: Customer-VDOM-355"></input>
-              </label>
+
+            {(state.multiVdomQuestion === 'multiVdomYes' &&
+                    <>
+                    <label name="vdomTotal">
+                      Please advise the total number of VDOMs required for the new policy.<input name="vdomTotal" onChange={handleChange} value={state.vdomTotal} type="text" placeholder="Example: 35"></input>
+                    </label>
+                    <label name="vdomName">
+                      VDOM Name:<input name="vdomName" type="text" placeholder="Example: Customer-VDOM-355"></input>
+                    </label>
+                    </> 
+                  )}
+            {(state.multiVdomQuestion !== 'undefined' &&               
               <label name="fwRuleName">
-                Firewall Rule Name:<input name="fwRuleName" type="text" placeholder="Example: Windows-Update-Service"></input>
+                Firewall Policy Name:<input name="fwRuleName" type="text" value={state.fwRuleName} onChange={handleChange} placeholder="Example: Windows-Update-Service"></input>
               </label>
+              )}
+
+            {( state.fwRuleName !== '' && 
               <label name="allowOrDeny">
-                Please advise if this is to allow or deny traffic.
-                <select name="allowOrDeny">
+                  Please advise if this is to allow or deny traffic.
+                <select name="allowOrDeny" value={state.allowOrDeny} onChange={handleChange}>
                   <option value="undefined">-- Please Choose</option>
                   <option value="allowRule">Allow</option>
                   <option value="denyRule">Deny</option>
                 </select>
-              </label> */}
-              <label name="portCreationReq2">
+              </label>
+            )}
+            
+            {(state.allowOrDeny !== '' && 
+                <label name="portCreationReqL">
                 Do you require a new custom service port or port group?
                 <select name="portCreationReq" value={state.portCreationReq} onChange={handleChange}>
                   <option value="undefined">-- Please Choose</option>
@@ -76,6 +99,7 @@ function FortigateFWRule() {
                   <option value="false">No</option>
                 </select>
               </label>
+            )}
 
               
              { (state.portCreationReq === 'false' &&                   
@@ -86,7 +110,6 @@ function FortigateFWRule() {
               ||
             
               (state.portCreationReq === 'true' &&
-                  <>
                   <label name="protocolListL">
                     TCP, UDP, or Both?
                     <select name="protocolList" value={state.protocolList} onChange={handleChange}>
@@ -96,22 +119,25 @@ function FortigateFWRule() {
                       <option value="bothTrue">Both</option>
                       <option value="mixedTrue">Mixed</option>
                     </select>
-                  </label>
-                  <label name="addServiceGroupL">
+                  </label> )
+                || ( <></> )}
+
+                {(state.protocolList !== 'undefined' &&                  
+                <label name="addServiceGroupL">
                   Would you like these ports to be added to a Service Group or as one individual service?
                     <select name="addServiceGroup" value={state.addServiceGroup} onChange={handleChange}>
                       <option value="undefined">-- Please Choose</option>
                       <option value="srvGrpYes">Group</option>
                       <option value="srvGrpNo">Individual</option>
                     </select>
-                  </label>
-                  <label name="portsListL">
+                  </label>) || (<></>)}
+
+                {(state.addServiceGroup !== 'undefined' && 
+                <label name="portsListL">
                     Comma Separated Ports, Hyphen for Range:<input name="portsList" value={state.portsList} onChange={handleChange} type="text" placeholder="Example: 1550, 1650, 1300-1301, 20">
                     </input>
-                </label> </> )
-
-                || ( <></> )}
-
+                </label> ) || (<></>)}
+                  
                {/*
               <label name="srcIntfName">
                 What is the Source Interface Name? (srcintf):<input name="srcIntfName" type="text" placeholder="Example: Inside_Vlan"></input>
