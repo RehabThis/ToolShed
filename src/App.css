@@ -146,6 +146,10 @@ button li {
   flex-wrap: nowrap !important;
 }
 
+.btn-secondary.disabled, .btn-secondary:disabled {
+  margin: 2%;
+}
+
 /* Start of Mobile Nav Styling */
 @media all and (min-width: 1921px) {
   .modal-dialog {

@@ -37,8 +37,10 @@ function Fortigate() {
               <Button className="navLinks" variant="secondary" disabled>
                 <li>VPN</li>
               </Button>
-              <Button className="navLinks" variant="secondary" disabled>
+              <Button className="navLinks" variant="info">
+                <Link to="/vendor/fortigate/ip-objects/"> 
                 <li>IP Objects</li>
+                </Link>
               </Button>
               <Button className="navLinks" variant="secondary" disabled>
                 <li>BGP Peer</li>

@@ -254,11 +254,9 @@ function FortigateFWRule() {
         </Modal.Footer>
       </Modal>
       <div id="backButton" className="backButton">
-      <Link to="/vendor/fortigate/fw-rule-gen/settings">
-          <Button variant="info" className="navLinks" onClick={handleShowSettings}>
+          <Button variant="secondary" className="navLinks" disabled>
             <li>Settings</li>
           </Button>
-        </Link>
         <Link to="/vendor/fortigate">
           <Button className="navLinks" variant="info">
             <li>Back</li>
