@@ -19,12 +19,12 @@ function Navbar() {
             <div id="navCol">
                 <h2 id="vendorChoice" className="appTitle">Choose Your Vendor:</h2>
                 <ul>
-                    <Link to="/vendor/juniper"><Button className="navLinks" variant="info"><li>Juniper</li></Button></Link>
+                    <Button className="navLinks" variant="secondary" disabled><li>Juniper</li></Button>
                     <Link to="/vendor/fortigate"><Button className="navLinks" variant="info"><li>Fortigate</li></Button></Link>
                 </ul>
                 <ul>    
                     <Link to="/vendor/cisco"><Button className="navLinks" variant="info"><li>Cisco</li></Button></Link>
-                    <Link to="/vendor/palo-alto"><Button className="navLinks" variant="info"><li>Palo Alto</li></Button></Link>  
+                    <Button className="navLinks" variant="secondary" disabled><li>Palo Alto</li></Button> 
                 </ul>
             </div>
         </div>

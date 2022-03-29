@@ -26,24 +26,24 @@ function Fortigate() {
                   <li>FW Rule</li>
                 </Link>
               </Button>
-              <Button className="navLinks" variant="info">
+              <Button className="navLinks" variant="secondary" disabled>
                 <li>Prefix List</li>
               </Button>
-              <Button className="navLinks" variant="info">
+              <Button className="navLinks" variant="secondary" disabled>
                 <li>Static Route</li>
               </Button>
             </ul>
             <ul className="navUL">
-              <Button className="navLinks" variant="info">
+              <Button className="navLinks" variant="secondary" disabled>
                 <li>VPN</li>
               </Button>
-              <Button className="navLinks" variant="info">
+              <Button className="navLinks" variant="secondary" disabled>
                 <li>IP Objects</li>
               </Button>
-              <Button className="navLinks" variant="info">
+              <Button className="navLinks" variant="secondary" disabled>
                 <li>BGP Peer</li>
               </Button>
-              <Button className="navLinks" variant="info">
+              <Button className="navLinks" variant="secondary" disabled>
                 <li>VDOM</li>
               </Button>
             </ul>

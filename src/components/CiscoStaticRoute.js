@@ -76,12 +76,12 @@ function CiscoStaticRoute() {
         </Modal.Footer>
       </Modal>
       <div className="backButton">
-      <Link to="/vendor/fortigate/whitelist/settings">
+      <Link to="/vendor/cisco/CiscoStaticRoute/settings">
           <Button variant="info" className="navLinks" onClick={handleShowSettings}>
             <li>Settings</li>
           </Button>
         </Link>
-        <Link to="/vendor/fortigate">
+        <Link to="/vendor/cisco">
           <Button className="navLinks" variant="info">
             <li>Back</li>
           </Button>
