@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 
 function parseConfig2(fqdnArray) {
     var pushOutputFirewall = [];
-    var fqdnList = fqdnArray.split("\n")
+    var fqdnList = fqdnArray.split("\n");
     var mask2 = (fqdnList) => {
         var cidrInfo = fqdnList.split("/");
         var mask2 = "0";
