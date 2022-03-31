@@ -21,10 +21,10 @@ function Fortigate() {
                   <li>Whitelist</li>
                 </Link>
               </Button>
-              <Button className="navLinks" variant="info">
-                <Link to="/vendor/fortigate/fw-rule-gen/">
+              <Button className="navLinks" variant="secondary" disabled>
+                {/* <Link to="/vendor/fortigate/fw-rule-gen/"> */}
                   <li>FW Rule</li>
-                </Link>
+                {/* </Link> */}
               </Button>
               <Button className="navLinks" variant="secondary" disabled>
                 <li>Prefix List</li>

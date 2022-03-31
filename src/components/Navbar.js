@@ -23,7 +23,7 @@ function Navbar() {
                     <Link to="/vendor/fortigate"><Button className="navLinks" variant="info"><li>Fortigate</li></Button></Link>
                 </ul>
                 <ul>    
-                    <Link to="/vendor/cisco"><Button className="navLinks" variant="info"><li>Cisco</li></Button></Link>
+                    <Button className="navLinks" variant="secondary" disabled><li>Cisco</li></Button>
                     <Button className="navLinks" variant="secondary" disabled><li>Palo Alto</li></Button> 
                 </ul>
             </div>
