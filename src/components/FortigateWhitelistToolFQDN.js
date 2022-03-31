@@ -68,7 +68,7 @@ function FortigateWhitelistToolFQDN() {
           <Button variant="info" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="info" onClick={ClipboardCopy(output)}>
+          <Button variant="info" disabled>
             Copy to Clipboard
           </Button>
         </Modal.Footer>

@@ -97,18 +97,13 @@ function parseConfig2(array) {
     var y = array.split("\n");
     var z = [];
     var h = y.map((e) => {
-      var cidrInfo = e.split("/");
-      var mask2 = getMask(cidrInfo[e]);
+      var mask2 = getMask(e);
       var subnet = e.split("/");
       var t = "config firewall address\nedit \"" + subnet[0] + "-CustNet\"\nset subnet " + subnet[0] + " " + mask2 + "\nset comment \"" + subnet[0] + "-CustNet\"\nnext\nend\n";
-      z.push(t);
-      console.log(t);
-      console.log(e);
-      return z.push(t);
+      z.push(" \"" + subnet[0] + "-CustNet\"")
+      return t;
     })
-    console.log(h + "this was h");
-    console.log(z + "this was z");
-    return h;
+    return h.join("") + 'config firewall addrgrp\nedit \"CustList\"\nappend member' + z.join("") + "\nend";
     }
 
     
@@ -131,12 +126,6 @@ function FortigateIPObjects() {
         }
       }
     
-      
-      var handleOutput = (e) => {
-        // setOutput(parseConfig2(fqdnList))
-      }
-
-
     return (
         <div className="appContainer">
         <div>
@@ -160,7 +149,7 @@ function FortigateIPObjects() {
               </div>
               <div className="col-6">
                 <label>Object Config</label>
-                <textarea className="textFields" value={output} onChange={handleOutput}></textarea>
+                <textarea className="textFields" value={output}></textarea>
               </div>
             </div>
           </Modal.Body>
@@ -168,7 +157,7 @@ function FortigateIPObjects() {
             <Button variant="info" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="info" onClick={ClipboardCopy(output)}>
+            <Button variant="info" disabled>
               Copy to Clipboard
             </Button>
           </Modal.Footer>
