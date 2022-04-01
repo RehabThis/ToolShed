@@ -37,7 +37,13 @@ function FortigateIPObjects() {
           setFqdnList("");
         }
       }
-    
+      var handleClear = (e) => {
+        setOutput("");
+      }
+      
+      
+
+      
     return (
         <div className="appContainer">
         <div>
@@ -66,6 +72,9 @@ function FortigateIPObjects() {
             </div>
           </Modal.Body>
           <Modal.Footer>
+            <Button variant="info" onClick={handleClear}>
+              Clear Output
+            </Button>
             <Button variant="info" onClick={handleClose}>
               Close
             </Button>

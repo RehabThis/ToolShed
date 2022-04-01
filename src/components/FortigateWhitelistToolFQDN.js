@@ -36,7 +36,11 @@ function FortigateWhitelistToolFQDN() {
   var handleOutput = (e) => {
     // setOutput(parseConfig2(fqdnList))
   }
+  var handleClear = (e) => {
+    setOutput("");
+  }
 
+  
   return (
     <div className="appContainer">
       <div>
@@ -65,6 +69,9 @@ function FortigateWhitelistToolFQDN() {
           </div>
         </Modal.Body>
         <Modal.Footer>
+          <Button variant="info" onClick={handleClear}>
+              Clear Output
+            </Button>
           <Button variant="info" onClick={handleClose}>
             Close
           </Button>
