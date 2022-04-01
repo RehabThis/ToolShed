@@ -3,7 +3,7 @@ import {Button, Modal} from 'react-bootstrap'
 import ClipboardCopy from './ClipboardCopy'
 import { Link } from 'react-router-dom'
 import GetMask from './GetMask'
-
+import IpArrayToIpMask from './IpArrayToIpMask'
 
 function parseConfig2(array) {
     var y = array.split("\n");
